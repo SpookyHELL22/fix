@@ -14,8 +14,6 @@ RegisterCommand('fix', function ()
         if group == 'owner' or group == "superadmin" or group == "admin" or group == "mod" then
             player = GetPlayerPed(-1)
 
-
-           
             if IsPedSittingInAnyVehicle(player) then
                 vehicle = GetVehiclePedIsIn(player, false)
                  FixVehicleWindow(vehicle, -1)
@@ -23,8 +21,6 @@ RegisterCommand('fix', function ()
                  ESX.ShowNotification('~g~Megjavitottad az autót!')
                  TriggerServerEvent('fix:dc')
 
-                -- TriggerServerEvent('toDiscord', 28076, '🔧 Fix','Egy játékos megjavította az autóját!\n***📃 Játékos adatok:***'..'\n-------------------------'..'\n**👤 [Játékos neve]**: '..name..'\n**🔢 [ID]**: '..id..'\n **🏷️ [Steam]**: '..stm..'\n🔌  **[IP]**: '..str..'\n**', '⌚ '..time)
-            
               else
                   ESX.ShowNotification('~o~Ehhez a parancshoz egy jármüben kell ülnöd!')
               end
@@ -40,16 +36,12 @@ RegisterCommand('clean', function ()
             player = GetPlayerPed(-1)
             local id = GetPlayerServerId(PlayerId())
             local name = GetPlayerName(PlayerId())
-
-
-             
+   
                 if IsPedSittingInAnyVehicle(player) then
                 vehicle = GetVehiclePedIsIn(player, false)
                  SetVehicleDirtLevel(vehicle, 0)
                  ESX.ShowNotification('~g~Megtisztitottad az autót!')
-                 TriggerServerEvent('clean:dc')
-                 --TriggerServerEvent('toDiscord', 16734599, '🧼 Clean','Egy játékos megtisztította az autóját!\n***📃 Játékos adatok:***'..'\n-------------------------'..'\n**👤 [Játékos neve]**: '..name..'\n**🔢 [ID]**: '..id..'\n **🏷️ [Steam]**: '..stm..'\n🔌  **[IP]**: '..str..'\n**', '⌚ '..time, Config.Webhook)
-       
+                 TriggerServerEvent('clean:dc')              
                 else
                     TriggerEvent('chat:addMessage', '~o~Ehhez a parancshoz egy jármüben kell ülnöd!')
                 end
@@ -57,7 +49,6 @@ RegisterCommand('clean', function ()
  
             end
   end, false)
-
 
   RegisterCommand('fuel', function (source, args)
     ESX.TriggerServerCallback("Admin:getRankFromPlayer", function(group)
@@ -70,15 +61,10 @@ RegisterCommand('clean', function ()
               local vehicle = GetVehiclePedIsIn(player, false)
                 SetVehicleOilLevel(vehicle, 5)
                  ESX.ShowNotification('~g~Üzemanyag szint átállitva!')
-                 TriggerServerEvent('fuel:dc', fuel)
-                 --TriggerServerEvent('toDiscord', 16734599, '🧼 Clean','Egy játékos megtisztította az autóját!\n***📃 Játékos adatok:***'..'\n-------------------------'..'\n**👤 [Játékos neve]**: '..name..'\n**🔢 [ID]**: '..id..'\n **🏷️ [Steam]**: '..stm..'\n🔌  **[IP]**: '..str..'\n**', '⌚ '..time, Config.Webhook)
-       
+                 TriggerServerEvent('fuel:dc', fuel)      
                 else
                     TriggerEvent('chat:addMessage', '~o~Ehhez a parancshoz egy jármüben kell ülnöd!')
                 end
-                
-
-
         end
     end)
 end)
